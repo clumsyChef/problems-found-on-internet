@@ -1,5 +1,3 @@
-//
-
 const prevSummation = () => {
 	let summation = 0;
 	return (numb = 0) => {
