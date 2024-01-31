@@ -1,22 +1,21 @@
-const createTimeout = () => {
+const createInterval = () => {
 	let timerId = 0;
 	let timerMap = {};
 
 	const create = (callback, delay) => {
 		let currId = timerId++;
 		timerMap[currId] = true;
-		const targetTime = Date.now() + delay;
+		let targetTime = Date.now() + delay;
 		const check = () => {
 			if (!timerMap[currId]) return;
-			if (Date.now() > targetTime) {
-				delete timerMap[currId];
-				return callback();
-			} else {
-				requestIdleCallback(check);
+			if (Date.now() >= targetTime) {
+				callback();
+				targetTime += delay;
 			}
+			requestAnimationFrame(check);
 		};
 
-		requestIdleCallback(check);
+		requestAnimationFrame(check);
 		return currId;
 	};
 
@@ -27,5 +26,4 @@ const createTimeout = () => {
 	return { create, clear };
 };
 
-window.myTimeout = createTimeout();
-console.log("asdf");
+window.myInterval = createInterval();
