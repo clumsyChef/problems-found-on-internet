@@ -1,9 +1,9 @@
 // console.log("hey this is running");
 
 const areParenthesesBalanced = (str) => {
-	const myStack = [];
 	if (str.length % 2 !== 0) return false;
 
+	const myStack = [];
 	const myMap = {
 		"}": "{",
 		"]": "[",
@@ -29,7 +29,6 @@ const areParenthesesBalanced = (str) => {
 };
 
 console.log(areParenthesesBalanced("]["));
-
-// console.log(areParenthesesBalanced("[{}]"));
-// console.log(areParenthesesBalanced("[{}{}{}{]"));
-// console.log(areParenthesesBalanced("({[]}){}[][({})]"));
+console.log(areParenthesesBalanced("[{}]"));
+console.log(areParenthesesBalanced("[{}{}{}{]"));
+console.log(areParenthesesBalanced("({[]}){}[][({})]"));
