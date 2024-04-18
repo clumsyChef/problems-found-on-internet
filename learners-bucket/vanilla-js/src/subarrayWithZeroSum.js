@@ -20,14 +20,36 @@ const bruteForce = (arr) => {
 		win--;
 	}
 
-	// sumToZeroSubArrays.reverse().forEach((item) => console.log(item));
 	return sumToZeroSubArrays;
 };
 
-const groupedArrs = bruteForce(inp);
+// const groupedArrs = bruteForce(inp);
 
-if (groupedArrs.length) {
-	console.log("Has", groupedArrs);
-} else {
-	console.log("none found");
-}
+// if (groupedArrs.length) {
+// 	console.log("Has", groupedArrs);
+// } else {
+// 	console.log("none found");
+// }
+
+const subWithZero = (arr) => {
+	const mySet = new Set();
+	mySet.add(0);
+
+	let summ = 0;
+
+	for (let i = 0; i < arr.length; i++) {
+		summ += arr[i];
+
+		if (mySet.has(summ)) {
+			return true;
+		}
+		mySet.add(summ);
+	}
+
+	return false;
+};
+
+console.log(subWithZero(inp));
+console.log(subWithZero([0]));
+console.log(subWithZero([1, 2, 3, 4]));
+console.log(subWithZero([5, 5, -3, 3]));
